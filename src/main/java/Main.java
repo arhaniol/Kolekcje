@@ -11,7 +11,7 @@ public class Main {
     private static void task2() {
         Scanner input = new Scanner(System.in);
         String line;
-        int pos;
+        int pos, i;
         List<String> firstName = new ArrayList<String>();
         List<String> secondName = new ArrayList<String>();
         boolean theMinus;
@@ -35,16 +35,15 @@ public class Main {
         } while (!theMinus);
         System.out.print("Podaj imię: ");
         line = input.next();
-        pos = firstName.indexOf(line);
-        if (pos < 0) {
-            pos = secondName.indexOf(line);
-            if (pos < 0) {
-                System.out.println("Nie znaleziono pary do tego imienia!");
-            } else {
-                System.out.println("Jego para to: " + firstName.get(pos));
+        for (i = 0; i < firstName.size(); i++) {
+            if (firstName.get(i).compareTo(line) == 0) {
+                System.out.println("Parą dla " + line + " Jest " + secondName.get(i));
             }
-        } else {
-            System.out.println("Jego para to: " + secondName.get(pos));
+        }
+        for (i = 0; i < secondName.size(); i++) {
+            if (secondName.get(i).compareTo(line) == 0) {
+                System.out.println("Parą dla " + line + " jest " + firstName.get(i));
+            }
         }
     }
 
